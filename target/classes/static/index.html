@@ -1,0 +1,257 @@
+<!doctype html>
+<html ng-app="pokemonApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	
+	<link rel="icon" type="image/png" href="resources/img/header_logo_mini.png">
+      
+	<title>Pokemon Service</title>
+
+	<!-- Bootstrap 3.3.6 -->
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+	
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+	<!-- Theme style -->
+	<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="dist/css/skins/skin-blue-light.min.css">
+	
+	<!-- Animate -->
+	<link rel="stylesheet" href="plugins/animate/animate.min.css">
+	
+	<!-- pNofify -->
+	<link href="plugins/pnotify/pnotify.custom.min.css" rel="stylesheet"/>
+	
+	<!-- DataTables -->
+	<link rel="stylesheet" href="plugins/datatables/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="plugins/datatables/extensions/datatables-colreorder/css/dataTables.colReorder.css">
+	<link rel="stylesheet" href="plugins/datatables/extensions/datatables-colvis/css/dataTables.colVis.css">
+	<link rel="stylesheet" href="plugins/datatables/extensions/datatables-tabletools/css/dataTables.tableTools.css">
+	<link rel="stylesheet" href="plugins/datatables/extensions/datatables-responsive/css/responsive.dataTables.css">
+	<link rel="stylesheet" href="plugins/datatables/extensions/datatables-scroller/css/dataTables.scroller.css">
+	<link rel="stylesheet" href="plugins/datatables/extensions/datatables-fixedcolumns/css/fixedColumns.dataTables.css">
+	<link rel="stylesheet" href="plugins/datatables/extensions/datatables-fixedheader/css/fixedHeader.dataTables.css">
+	<link rel="stylesheet" href="plugins/datatables/extensions/datatables-buttons/css/buttons.dataTables.css">
+	<link rel="stylesheet" href="plugins/datatables/extensions/datatables-select/css/select.dataTables.css">
+	<link rel="stylesheet" href="plugins/datatables/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="plugins/angular-datatables/css/angular-datatables.css">
+	
+	<!-- Ng Tags Input -->
+	<link rel="stylesheet" href="plugins/ngtagsinput/ng-tags-input.min.custom.css">
+	<link rel="stylesheet" href="plugins/ngtagsinput/ng-tags-input.min.css">	
+	
+	<!-- Custom -->
+	<link rel="stylesheet" href="resources/css/site.css">
+</head>
+
+<body class="hold-transition skin-blue-light sidebar-mini" ng-controller="indexCtrl">
+
+	<div class="wrapper">
+
+		<!-- Main Header -->
+		<header class="main-header">
+
+			<!-- Logo -->
+ 			<a ng-href="#!/" class="logo"> 
+<!-- 				<span class="logo-mini"><img src="resources/img/header_logo_mini.png"/></span>
+				<span class="logo-lg"><img src="resources/img/header_logo.png"/></span> -->
+			</a>
+
+			<!-- Header Navbar -->
+			<nav class="navbar navbar-static-top" role="navigation">
+
+				<!-- Sidebar toggle button-->
+				<a href="javascript:;" class="sidebar-toggle" data-toggle="offcanvas"
+					role="button"> <span class="sr-only" ng-cloak>{{'index.navigation' | translate}}</span>
+				</a>
+				<!-- Navbar Right Menu -->
+				<div class="navbar-custom-menu">
+					<ul class="nav navbar-nav">
+
+						<!-- User Account Menu -->
+						<li class="dropdown user user-menu">
+							<!-- Menu Toggle Button -->
+							<a href="javascript:;" class="dropdown-toggle"	data-toggle="dropdown">
+								<!-- The user image in the navbar-->
+								<img src="resources/img/avatar.png" class="user-image"	alt="User Image">
+								<!-- hidden-xs hides the username on small devices so only the image appears. -->
+								<span class="hidden-xs" ng-cloak>{{user.username}}</span>
+							</a>
+							
+							<ul class="dropdown-menu">
+								<!-- The user image in the menu -->
+								<li class="user-header" style="height: 80px">
+									<p ng-cloak>
+										{{user.name}} <small>{{user.email}}</small>
+									</p>
+								</li>
+								<!-- Menu Footer-->
+								<li class="user-footer">
+									<div class="pull-right" ng-cloak>
+										<a href="service/security/logout" class="btn btn-default btn-flat">{{'common.exit' | translate}}</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+
+						<!-- Control Sidebar Toggle Button -->
+<!-- 						<li><img src="resources/img/iii.png"  -->></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="main-sidebar">
+
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+
+				<!-- Sidebar user panel (optional) -->
+				<div class="user-panel">
+					<div class="pull-left image">
+						<img src="resources/img/avatar.png" class="img-circle" alt="User Image">
+					</div>
+					<div class="pull-left info" ng-cloak>
+						<p>{{user.firstName}}</p>
+						<a href="javascript:;">{{now | date:'short' }}</a>
+					</div>
+				</div>
+
+				<!-- Sidebar Menu -->
+				<ul class="sidebar-menu">					
+					<li class="active" ng-cloak>
+						<a ng-href="#!/teams">
+							<i class="fa fa-users"></i>	<span>{{'menu.team' | translate}}</span>
+						</a>
+					</li>
+				</ul>
+				<!-- /.sidebar-menu -->
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+
+				<!-- Your Page Content Here -->
+				<div ng-view></div>
+
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- REQUIRED JS SCRIPTS -->
+
+	<!-- jQuery 2.2.3 -->
+	<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+
+	<!-- Angular 1.5.7 -->
+	<script src="plugins/angular/angular.min.js"></script>
+	<script src="plugins/angular/angular-route.min.js"></script>
+	<script src="plugins/angular/angular-translate.min.js"></script>
+
+	<!-- Bootstrap 3.3.6 -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- pNofify -->
+	<script src="plugins/pnotify/pnotify.custom.min.js"></script>
+
+	<!-- AdminLTE App -->
+	<script src="dist/js/app.min.js"></script>
+
+	<!-- Slimscroll -->
+	<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+
+	<!-- FastClick -->
+	<script src="plugins/fastclick/fastclick.js"></script>
+
+	<!-- DataTables -->
+	<script src="plugins/datatables/js/jquery.dataTables.js"></script>
+    <script src="plugins/datatables/extensions/datatables-colreorder/js/dataTables.colReorder.js"></script>
+	<script src="plugins/datatables/extensions/datatables-colvis/js/dataTables.colVis.js"></script>
+	<script src="plugins/datatables/extensions/datatables-tabletools/js/dataTables.tableTools.js"></script>
+    <script src="plugins/datatables/extensions/datatables-responsive/js/dataTables.responsive.js"></script>
+    <script src="plugins/datatables/extensions/datatables-scroller/js/dataTables.scroller.js"></script>
+    <script src="plugins/datatables/extensions/datatables-columnfilter/js/dataTables.columnFilter.js"></script>
+    <script src="plugins/datatables/extensions/datatables-light-columnfilter/dist/dataTables.lightColumnFilter.min.js"></script>
+    <script src="plugins/datatables/extensions/datatables-fixedcolumns/js/dataTables.fixedColumns.js"></script>
+    <script src="plugins/datatables/extensions/datatables-fixedheader/js/dataTables.fixedHeader.js"></script>
+    <script src="plugins/datatables/extensions/datatables-buttons/js/dataTables.buttons.js"></script>
+    <script src="plugins/datatables/extensions/datatables-buttons/js/buttons.colVis.js"></script>
+    <script src="plugins/datatables/extensions/datatables-buttons/js/buttons.flash.js"></script>
+    <script src="plugins/datatables/extensions/datatables-buttons/js/buttons.html5.js"></script>
+    <script src="plugins/datatables/extensions/datatables-buttons/js/buttons.print.js"></script>
+    <script src="plugins/datatables/extensions/datatables-select/js/dataTables.select.js"></script>
+	<script src="plugins/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="plugins/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    
+    <script src="plugins/angular-datatables/angular-datatables.js"></script>
+    <script src="plugins/angular-datatables/angular-datatables.util.js"></script>
+    <script src="plugins/angular-datatables/angular-datatables.options.js"></script>
+    <script src="plugins/angular-datatables/angular-datatables.instances.js"></script>
+    <script src="plugins/angular-datatables/angular-datatables.factory.js"></script>
+    <script src="plugins/angular-datatables/angular-datatables.renderer.js"></script>
+    <script src="plugins/angular-datatables/angular-datatables.directive.js"></script>
+    <script src="plugins/angular-datatables/plugins/bootstrap/angular-datatables.bootstrap.options.js"></script>
+    <script src="plugins/angular-datatables/plugins/bootstrap/angular-datatables.bootstrap.colvis.js"></script>
+    <script src="plugins/angular-datatables/plugins/bootstrap/angular-datatables.bootstrap.tabletools.js"></script>
+    <script src="plugins/angular-datatables/plugins/bootstrap/angular-datatables.bootstrap.js"></script>
+    <script src="plugins/angular-datatables/plugins/colvis/angular-datatables.colvis.js"></script>
+    <script src="plugins/angular-datatables/plugins/colreorder/angular-datatables.colreorder.js"></script>
+    <script src="plugins/angular-datatables/plugins/tabletools/angular-datatables.tabletools.js"></script>
+    <script src="plugins/angular-datatables/plugins/scroller/angular-datatables.scroller.js"></script>
+    <script src="plugins/angular-datatables/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+    <script src="plugins/angular-datatables/plugins/light-columnfilter/angular-datatables.light-columnfilter.js"></script>
+    <script src="plugins/angular-datatables/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+    <script src="plugins/angular-datatables/plugins/fixedheader/angular-datatables.fixedheader.js"></script>
+    <script src="plugins/angular-datatables/plugins/buttons/angular-datatables.buttons.js"></script>
+    <script src="plugins/angular-datatables/plugins/select/angular-datatables.select.js"></script>
+        
+	<!-- Ng Tags Input -->
+	<script src="plugins/ngtagsinput/ng-tags-input.min.js"></script>
+	
+	<!--  I18N -->
+	<script src="app/i18n/pt-br.js"></script>
+	
+	<!-- MODULES -->
+	<script src="app/app.module.js"></script>
+	<script src="app/app.config.js"></script>
+	<script src="app/app.index.js"></script>
+
+	<!-- home -->
+	<script src="app/home/home.module.js"></script>
+	<script src="app/home/home.component.js"></script>
+	
+	<!-- team-list -->
+ 	<script src="app/team-list/team-list.module.js"></script>
+	<script src="app/team-list/team-list.component.js"></script>
+	
+	<!-- team-detail -->
+ 	<script src="app/team-detail/team-detail.module.js"></script>
+	<script src="app/team-detail/team-detail.component.js"></script> 
+		
+	<!-- pokemon-detail -->
+ 	<script src="app/pokemon-detail/pokemon-detail.module.js"></script>
+	<script src="app/pokemon-detail/pokemon-detail.component.js"></script> 
+
+	<div data-ng-init="init();"></div>
+</body>
+</html>

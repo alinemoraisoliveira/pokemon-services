@@ -1,0 +1,66 @@
+<div class="box box-primary animated slideInRight">
+
+	<div class="box-header">
+		<h3 class="box-title">{{'title.pokemon' | translate}}</h3>
+	</div>	
+
+	<div class="box-body">
+		<form name="pokemonForm" ng-submit="save()" method="POST">
+			<div class="row">
+				<div class="col-sm-4 col-md-4">
+			        <div class="form-group">
+			          <label for="name">{{'pokemon.name' | translate}}</label>
+			          <input type="text" class="form-control" ng-model="pokemon.name" required></input>
+			        </div>
+			    </div>
+			</div>
+			
+	        <div class="row">
+	        	<div class="col-sm-12">
+	        	     <div class="form-group">
+				        <button type="submit" class="btn btn-primary">
+	        				<i class="fa fa-floppy-o"></i>&nbsp;{{'common.save' | translate}}
+	        			</button>
+						<a href="#!/pokemons"><button class="btn btn-default" type="button"><i class="fa fa-times"></i> {{'common.back' | translate}}</button></a>
+			        </div>
+			    </div>
+		    </div>
+		</form>
+		
+		<div id="divPokemon">
+	        <div class="row">
+	        	<div class="col-sm-12">
+	        		<div class="form-group">
+				        <h3 class="box-title">{{'title.pokemons' | translate}}</h3>
+				 	</div>
+			    </div>
+		    </div>
+		
+			 <div class="row">
+	        	<div class="col-sm-12">
+			    	<table datatable="" id="modal-table" class="table table-bordered table-striped"  dt-options="$ctrl.dtOptions" dt-columns="$ctrl.dtColumns" dt-instance="$ctrl.dtInstance">
+			    	</table>
+			    </div>
+		     </div>
+		</div>
+	     
+		<div id="divHability" hidden="true">
+	        <div class="row">
+	        	<div class="col-sm-12">
+	        		<div class="form-group">
+				        <h3 class="box-title">{{'title.pokemons' | translate}}</h3>
+				 	</div>
+			    </div>
+		    </div>
+	     
+		    <div class="row">
+	        	<div class="col-sm-12">
+			    	<table datatable="" id="modal-table" class="table table-bordered table-striped" dt-options="$ctrl.dtOptions" dt-columns="$ctrl.dtColumns" dt-instance="$ctrl.dtInstance">
+			    	</table>
+			    </div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div data-ng-init="init();"></div>

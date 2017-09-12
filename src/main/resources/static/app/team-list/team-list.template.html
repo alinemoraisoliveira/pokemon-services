@@ -1,0 +1,26 @@
+<div class="box box-primary animated slideInRight">
+	<div class="box-header">
+		<h3 class="box-title">{{'title.teams' | translate}}</h3>
+	</div>	
+
+	<div class="box-body" ng-cloak>
+	
+        <div class="row">
+        	<div class="col-sm-12">
+        		<div class="form-group">
+			        <button ng-click="refresh();" type="button" class="btn btn-primary">
+			            <i class="fa fa-refresh"></i>&nbsp;{{'common.reloadData' | translate}}
+			        </button>
+			        <a href="#!/insertteams"><button class="btn btn-primary" type="button"><i class="fa fa-file"></i> {{'common.insert' | translate}}</button></a>
+			     </div>
+		    </div>
+	    </div>
+	
+		<div class="row">
+        	<div class="col-sm-12">
+		    	<table datatable="" id="modal-table" class="table table-bordered table-striped" dt-options="$ctrl.dtOptions" dt-columns="$ctrl.dtColumns" dt-instance="$ctrl.dtInstance">
+		    	</table>
+		    </div>
+	    </div>	
+	</div>
+</div>
